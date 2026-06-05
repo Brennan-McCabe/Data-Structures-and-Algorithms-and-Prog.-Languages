@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+int main(void) {
+    double grade, highest = 0.0, lowest = 100.0, avg, total = 0.0;
+    int count = 0;
+    
+    printf("Enter a grade or negative to stop: \n");
+    scanf("%lf", &grade); 
+    
+    while(grade >= 0) {
+        count++;
+        total = total + grade;
+        
+        if (grade > highest)
+            highest = grade;
+        if (grade < lowest)
+            lowest = grade;
+            
+        printf("Enter a grade or negative to stop: \n");
+        scanf("%lf", &grade); 
+    }
+    
+    if (count > 0) {
+        avg = total / count;
+        
+        printf("Highest grade is %f \n", highest);
+        printf("Lowest grade is %f \n", lowest);
+        printf("Average grade is %f \n", avg);
+    } else {
+        printf("No valid grades were entered.\n");
+    }
+    
+    return 0;
+}
