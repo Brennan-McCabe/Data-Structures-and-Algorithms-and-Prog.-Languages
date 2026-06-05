@@ -1,0 +1,62 @@
+//Descending Bubble Sort in C
+//Brennan McCabe 6/4
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define SIZE 10
+
+void bubbleSort(int *const array, const size_t size);
+void swap(int *element1Ptr, int *element2Ptr); 
+
+int main(void)
+{
+    int a[SIZE];
+
+    srand(time(NULL));
+    for (size_t i = 0; i < SIZE; ++i)
+    {
+        a[i] = (rand() % 100) + 1;
+    }
+
+    puts("\nData in original order:");
+
+    for (size_t i = 0; i < SIZE; ++i)
+    {
+        printf("%4d", a[i]);
+    }
+
+    bubbleSort(a, SIZE);
+
+    puts("\n\nData in ascending order:");
+
+    for (size_t i = 0; i < SIZE; ++i)
+    {
+        printf("%4d", a[i]);
+    }
+
+    puts("");
+    
+    return 0;
+}
+
+void bubbleSort(int * const array, const size_t size)
+{
+    for (unsigned int pass = 0; pass < size - 1; ++pass) 
+    {
+        for (size_t j = 0; j < size - 1; ++j) 
+        {
+            if (array[j] < array[j+1])
+            {
+                swap(&array[j], &array[j+1]);
+            }
+        }
+    }
+}
+
+void swap(int *element1Ptr, int *element2Ptr)
+{
+    int hold = *element1Ptr;
+    *element1Ptr = *element2Ptr; 
+    *element2Ptr = hold;
+}
