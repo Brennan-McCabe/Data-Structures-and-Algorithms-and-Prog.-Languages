@@ -1,0 +1,18 @@
+#include <stdio.h>
+int main(void) {
+	int odd = 0, even = 0, num;
+	printf("Enter an integer or 0 to quit: \n");
+	scanf("%d", &num);
+	while(num!=0){
+		if (num % 2 == 0)
+			even++;
+		else
+			odd++;
+		printf("Enter an integer or 0 to quit: \n");
+		scanf("%d", &num);
+	}
+	printf("The number of odds is: %d.\n", odd);
+	printf("The number of evens is: %d.\n", even);
+	
+	return 0;
+}
