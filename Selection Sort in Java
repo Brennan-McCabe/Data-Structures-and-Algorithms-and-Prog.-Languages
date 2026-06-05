@@ -1,0 +1,37 @@
+import java.security.SecureRandom;
+import java.util.Arrays;
+
+public class SelectionSortTest2
+{
+	public static void selectionSort(int[] data)
+	{
+		for (int i = 0; i < data.length - 1; i++)
+		{
+			int smallest = i;
+
+			for (int index = i + 1; index < data.length; index++) {
+				if (data[index] < data[smallest]) {
+					smallest = index;
+				}
+			}
+			swap(data, i, smallest);
+		}
+	}
+	
+	private static void swap(int[] data, int first, int second)
+	{
+		int temporary = data[first];
+		data[first] = data[second];
+		data[second] = temporary;
+	}
+
+	public static void main(String[] args)
+	{
+		SecureRandom generator = new SecureRandom();
+		int[] data = generator.ints(20, 1900, 2026).toArray();
+		
+		System.out.printf("Unsorted array: %s%n" , Arrays.toString(data));
+		selectionSort(data);
+		System.out.printf("%nSorted array using selection sort algorithm: %s%n" , Arrays.toString(data));
+	}
+}
