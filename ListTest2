@@ -1,0 +1,39 @@
+//Generic Linked List Practice using Doubles
+//Brennan McCabe 6/10
+
+import java.util.NoSuchElementException;
+
+public class ListTest2 {
+	public static void main(String[] args) {
+		List<Double> list = new List<>();
+		
+		list.insertAtFront(-1.1);
+		list.print();
+		list.insertAtFront(0.9999);
+		list.print();
+		list.insertAtBack(1.2);
+		list.print();
+		list.insertAtBack(5.6);
+		list.print();
+		
+		try {
+			double removedItem = list.removeFromFront();
+			System.out.printf("%n%f removed%n", removedItem);
+			list.print();
+			
+			removedItem = list.removeFromFront();
+			System.out.printf("%n%f removed%n", removedItem);
+			list.print();
+			
+			removedItem = list.removeFromBack();
+			System.out.printf("%n%f removed%n", removedItem);
+			list.print();
+			
+			removedItem = list.removeFromBack();
+			System.out.printf("%n%f removed%n", removedItem);
+			list.print();
+		}
+			catch (NoSuchElementException noSuchElementException) {
+				noSuchElementException.printStackTrace();			}
+	}
+}
