@@ -1,0 +1,39 @@
+//Generic Linked List Practice using Strings
+//Brennan McCabe 6/10
+
+import java.util.NoSuchElementException;
+
+public class ListTest3 {
+	public static void main(String[] args) {
+		List<String> list = new List<>();
+		
+		list.insertAtFront("A1");
+		list.print();
+		list.insertAtFront("B2");
+		list.print();
+		list.insertAtBack("C3");
+		list.print();
+		list.insertAtBack("D4");
+		list.print();
+		
+		try {
+			String removedItem = list.removeFromFront();
+			System.out.printf("%n%s removed%n", removedItem);
+			list.print();
+			
+			removedItem = list.removeFromFront();
+			System.out.printf("%n%s removed%n", removedItem);
+			list.print();
+			
+			removedItem = list.removeFromBack();
+			System.out.printf("%n%s removed%n", removedItem);
+			list.print();
+			
+			removedItem = list.removeFromBack();
+			System.out.printf("%n%s removed%n", removedItem);
+			list.print();
+		}
+			catch (NoSuchElementException noSuchElementException) {
+				noSuchElementException.printStackTrace();			}
+	}
+}
