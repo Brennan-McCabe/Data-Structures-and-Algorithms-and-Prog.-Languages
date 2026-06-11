@@ -1,0 +1,82 @@
+//MergeSortTest.java this program defines mergesort() method and demonstrates merge sort operations on variable sized arrays
+//Brennan McCabe
+//6/11
+
+import java.security.SecureRandom;
+import java.util.Arrays;
+
+public class MergeSortTest {
+		public static void mergeSort(int[] data)
+		{
+			sortArray(data, 0, data.length -1);
+		}
+		
+		private static void sortArray(int[] data, int low, int high) {
+			if ((high - low) >= 1) {
+				int middle1 = (low + high)/2;
+				int middle2 = middle1 + 1;
+				
+				sortArray(data, low, middle1);
+				sortArray(data, middle2, high);
+				merge (data, low, middle1, middle2, high);
+				}
+		}
+		
+		private static void merge(int[] data, int left, int middle1, int middle2, int right)
+		{
+			int leftIndex = left;
+			int rightIndex = middle2;
+			int combinedIndex = left;
+			int[] combined = new int[data.length];
+					
+			while (leftIndex <= middle1 && rightIndex <= right) {
+				if (data[leftIndex] <= data[rightIndex]) {
+					combined[combinedIndex++] = data[leftIndex++];
+				}
+				else {
+					combined[combinedIndex++] = data[rightIndex++];
+				}
+			}
+			
+			if (leftIndex == middle1) {
+				while (rightIndex <= right) {
+					combined[combinedIndex++] = data[leftIndex++];
+				}
+			}
+			else {
+				while (leftIndex <= middle1) {
+					combined[combinedIndex++] = data[leftIndex++];
+				}
+			}
+			
+			for(int i = left; i <= right; i++) {
+				data[i] = combined[i];
+			}
+		}
+		
+		public static void main(String[] args)
+		{
+			SecureRandom generator = new SecureRandom();
+			
+			int[] data = generator.ints(1000000, 10, 910).toArray();
+			
+			long starttime = System.currentTimeMillis();
+			System.out.printf("Unsorted random array: %s%n%n", java.util.Arrays.toString(data));
+			mergeSort(data);
+			long endtime = System.currentTimeMillis();
+			long elapsedtime = endtime - starttime;
+			
+			System.out.printf("Sorted array after Mergesort : %s%n", Arrays.toString(data));
+			System.out.printf("Elapsed time: " +elapsedtime/1000 + "seconds.");
+			System.out.println();
+		}
+}
+
+/*
+For one million random integers from 10-90, MergeSort() took:
+Intel Core i5 on MacBook pro about 6 minutes.
+AMD processor on Windows 10 did not display any errors and stopped running.
+Intel Core i7 12th generation processor on Win11 took 5.23 minutes.
+Intel Core i5 7th generation processor on DDR4 RAM on RedHat Linux 9.4 took 292 seconds. 
+Microsoft Surface Laptop 5 with Intel i5 12th generation processor took 9 minutes.
+*/
