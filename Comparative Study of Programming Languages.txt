@@ -1,0 +1,342 @@
+Brennan McCabe
+6/19/26
+
+Comparative Study of Programming Languages
+For my project, I’ll be demonstrating the similarities and differences of the Python, Java, C++, C, and PERL programming languages.
+
+Data Types:
+
+Python:
+
+	X = 4 					#Integer
+	pi = 3.1415 				#Floating-point
+	shape = “Square” 			#String
+	is_shape = True 			#Boolean
+
+Java:
+
+	int x =4;				//Integer
+	double pi = 3.1415;			//Floating-point
+	String shape = “Square”;		//String
+	Boolean isShape = true;			//Boolean
+
+C++
+
+	#include <iostream>
+	#include <string>
+	int x = 4;				//Integer
+	double pi = 3.1415;			//Floating-point
+	std::string shape = “Square”;		//String
+	bool isShape = true;			//Boolean
+
+C:
+	#include <stdio.h>
+	#include <stdbool.h>
+
+	int x = 4;				//Integer
+	double pi = 3.1415;			//Floating-point
+	char shape[] = "Square";		//String
+	bool is_shape = true;			//Boolean
+
+PERL:
+	my $x = 4;				//Integer (Scalar)
+	my $pi = 3.1415;			//Floating-point (Scalar)
+	my $shape = "Square";			//String (Scalar)
+	my $is_shape = 1;			//Boolean (PERL doesn't have bools)
+
+As you can see, despite (for the most part) having matching data types, the way they are declared and their formats are very different.
+
+Control Structures:
+
+To demonstrate the differences in control structures, I'll use two simple processes:
+an if/else statement to determine if a given number is positive, negative, or zero.
+a loop to sum up 1+2+3+4+5.
+
+Python:
+
+#if-elif-else:
+	n = 1
+	if n > 0:
+		print(“The number is positive.”)
+	elif n < 0:
+		print(“The number is negative.”)
+	else:
+		print(“The number is zero.”)	
+# Loop:
+	total = 0
+	for i in range(6):
+		total += i
+		print(f"Sum: {total}")
+Java:
+
+//if-else:
+	int n = 1;
+	if (n > 0) {
+		System.out.println("The number is positive.");
+	} else if (n < 0) {
+		System.out.println("The number is negative.");
+	} else {
+		System.out.println("The number is zero.");
+	}
+// Loop
+	int total = 0;
+	for (int i = 1;i <= 5; i++) {
+		total += i;
+		System.out.println("Sum: " + total);
+	}
+
+C++:
+
+// if-else:
+	int n = 1;
+
+	if (n > 0) {
+		std:cout << "The number is positive." << std::endl;
+	} else if (n < 0) {
+		std::cout << "The number is negative." << std::endl;
+	} else {
+		std::cout << "The number is zero." << std::endl;
+	}
+// Loop:
+	int total =0;
+	for (int i =1; i <=5; i++) {
+		total += i;
+		std::cout << "Sum: " << total << std::endl;
+	}
+
+C:
+
+//if-else:
+
+	int number = 1;
+
+	if (number > 0) {
+		printf("The number is positive. \n");
+	} else if (number < 0) {
+		printf("The number is negative. \n");
+	} else {
+		printf("The number is zero. \n");
+	}
+
+//Loop:
+
+	for (int i =1; i <= 5; i++) {
+		printf("Sum: %d\n", i);
+	}
+
+PERL:
+
+//if-else:
+
+	my $number = 1;
+	if ($number > 0) {
+		print "The number is positive.\n";
+	} elsif ($number < 0) {
+		print "The number is negative.\n";
+	} else {
+		print "The number is zero.\n";
+	}
+
+//Loop:
+
+	for my $i (1..5) {
+		print "Sum: $i\n";
+	}
+
+
+Functions
+
+For this, we'll define a function to calculate the area of a triangle, then demonstrate how to pass parameters and return values.
+
+Python:
+
+	def calculate_triangle_area(base, height):
+		return 0.5 * base * height
+
+	area =calculate_triangle_area(1,2)
+
+Java:
+
+	public static double calculateTriangleArea(double base, double height) {
+		return .5 * base * height;
+	}
+
+	double area = calculateTriangleArea(1,2);
+
+C++ & C:
+
+	double calculateTriangleArea(double base, double height) {
+		return .5 * base * height;
+	}
+
+	double area = calculateTriangleArea(1,2);
+
+PERL:
+
+	sub calculate_triangle_area {
+		my ($base, $height) = @_;
+		return .5 * $base * $height;
+	}
+
+Variable Scope
+
+To demonstrate local and global variables, I'll calculate the circumference of a circle where pi is a global variable and the radius is declared as a local variable.
+
+Python:
+
+	GLOBAL_PI = 3.1415
+
+	def calculate_circ(radius):
+		local_circ = 2 * GLOBAL_PI * radius
+		return local_circ
+
+Java (No true globals)
+
+	public class GeometryMath{
+		static final double GLOBAL_PI = 3.1415;
+		public static double calculateCirc(double radius){
+		double localCirc = 2 * GLOBAL_PI * radius;
+		return localCirc;
+		}
+	}
+
+C++ & C:
+
+	const double GLOBAL_PI = 3.1415;
+
+	double calculateCirc(double radius) {
+		double localCirc = 2 * GLOBAL_PI * radius;
+		return localCirc;
+	}
+
+PERL:
+
+	our $GLOBAL_PI = 3.1415;
+	sub calc_circ {
+		my $radius = shift;
+		my $local_circ = 2 * $GLOBAL_PI * $radius;
+		return $local_circ;
+	}
+
+OOP
+
+Object Oriented Programming
+
+To demonstrate OOP in the various languages, I'll create a Rectangle class initialized with a height and width and calculate its area. Note that some languages are built for OOP and some are not. In C specifically, there are no classes, but we can replicate classes by building structs. PERL also handles OOP in an unusual way requiring you bless references into packages.
+
+Python:
+
+	class Rectangle:
+		def __init__(self, width, height):
+			self.width = width
+			self.height = height
+
+		def get_area(self):
+			return self.width * self.height
+
+	rect = Rectangle(4,5)
+	area = rect.get_area()
+
+Java:
+
+	public class Rectangle {
+		private double width;
+		private double height;
+
+		public Rectangle(double width, double height) {
+			this.width = width;
+			this.height = height;
+		}
+
+		public double getArea() {
+			return this.width * this.height;
+		}
+
+		public static void main(String[] args) {
+			Rectangle rect = new Rectangle(4,5);
+			double area = rect.getArea();
+		}
+	}
+
+C++:
+
+	#include <iostream>
+
+	class Rectangle {
+	private:
+		double width;
+		double height;
+
+	public:
+		Rectangle(double w, double h) {
+			width = w;
+			height = h;
+		}
+		double getArea() {
+			return width * height;
+		}
+	};
+
+	int main() {
+		Rectangle rect(4,5);
+		double area = rect.getArea();
+		return 0;
+	}
+
+C:
+
+	#include <stdio.h>
+	
+	typedef struct {
+		double width;
+		double height;
+	} Rectangle;
+			//Here we simulate OOP by passing the struct as a pointer
+	double getArea(Rectangle* rect) {
+		return rect->width * rect->height;
+	}
+
+	int main() {
+		Rectangle rect = {4.0, 5.0};
+		double area = getArea(&rect);
+		return 0;
+	}
+
+PERL:
+
+	package Rectangle;
+
+	# Constructor
+	sub new {
+	    my $class = shift;
+	    my $self = {
+	        width  => shift,
+	        height => shift,
+	    };
+	    # "Blessing" ties the hash reference to the Rectangle class
+	    bless $self, $class;
+	    return $self;
+	}
+
+	sub get_area {
+	    my $self = shift; # The object itself is passed as the first argument
+	    return $self->{width} * $self->{height};
+	}
+
+	my $rect = Rectangle->new(4, 5);
+	my $area = $rect->get_area();
+
+Conclusion:
+
+
+As you can see in the code snippets, each language has both strengths and weaknesses and choosing the right language for the job is perhaps the first critical step when developing a project.
+
+Python: Very readable and user friendly with built-in OOP, but can get caught up in debugging and long runtimes.
+
+Java: A robust and highly structured system along with built-in OOP allows a wide variety of uses, but can be longer and more arduous than Python or PERL.
+
+C++: Has great OOP and bridges the gap between Java and C beautifully, but can be difficult to grasp and master.
+
+C: A foundational, procedural language, but it lacks some of the refinement of newer languages. No native OOP, for example.
+
+PERL: Flexible and powerful for text manipulation allowing more "natural language" style coding, but OOP is handled awkwardly and it can be difficult to parse.
